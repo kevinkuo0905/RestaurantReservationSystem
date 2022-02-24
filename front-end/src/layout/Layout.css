@@ -1,0 +1,62 @@
+#dashboard-card {
+  min-width: 360px;
+  max-width: 1200px;
+}
+
+#create-reservation-card {
+  min-width: 360px;
+  max-width: 720px;
+}
+
+#create-table-card {
+  min-width: 360px;
+  max-width: 540px;
+}
+
+#table-card {
+  width: 260px;
+}
+
+td .btn {
+  font-size: smaller;
+}
+
+.btn {
+  padding: 0.3rem;
+}
+
+@media (min-width: 1200px) {
+  #nav-menu {
+    min-width: 275px;
+    min-height: 100vh;
+  }
+}
+
+@media (max-width: 630px) {
+  body {
+    font-size: smaller;
+  }
+
+  .btn {
+    padding: 0.2rem;
+  }
+
+  td,
+  th {
+    padding: 0.2rem !important;
+  }
+}
+
+@media (max-width: 450px) {
+  body {
+    font-size: x-small;
+  }
+
+  .card {
+    padding: 0.5rem !important;
+  }
+
+  .btn {
+    font-size: x-small;
+  }
+}
