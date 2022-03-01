@@ -54,7 +54,7 @@ function validProperties(req, res, next) {
     return next({ status: 400, message: `"${reservation_date}" is an invalid reservation_date` })
   }
 
-  if (new Date(reservation_date).getDay() == 1) {
+  if (new Date(reservation_date).getDay() == 2) {
     return next({ status: 400, message: `restaurant is closed on Tuesdays` })
   }
 
