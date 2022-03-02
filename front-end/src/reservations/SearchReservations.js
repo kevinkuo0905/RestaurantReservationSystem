@@ -28,11 +28,22 @@ export default function SearchReservations() {
     return () => abortController.abort()
   }
 
-  const changeQuery = () => (queries.get("mobile_number") ? setSelectedNumber(queries.get("mobile_number")) : null)
+  const changeQuery = () =>
+    queries.get("mobile_number") ? setSelectedNumber(queries.get("mobile_number")) : null
 
   useEffect(changeQuery, [queries])
 
   useEffect(loadDashboard, [selectedNumber])
+
+  const loadingSpinner = (
+    <div className="text-center flex-fill">
+      <div className="spinner-border" role="status" />
+    </div>
+  )
+
+  const errorAlert = <ErrorAlert error={reservationsError} />
+
+  const table = <ReservationsTable reservations={reservations} />
 
   return (
     <main>
@@ -50,15 +61,7 @@ export default function SearchReservations() {
           </form>
         </nav>
         <div className="card-body px-2">
-          {loading ? (
-            <div className="text-center flex-fill">
-              <div className="spinner-border" role="status" />
-            </div>
-          ) : reservationsError ? (
-            <ErrorAlert error={reservationsError} />
-          ) : (
-            <ReservationsTable reservations={reservations} />
-          )}
+          {loading ? loadingSpinner : reservationsError ? errorAlert : table}
         </div>
       </div>
     </main>

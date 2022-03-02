@@ -21,19 +21,21 @@ export default function Tables() {
 
   useEffect(loadDashboard, [])
 
+  const loadingSpinner = (
+    <div className="text-center flex-fill">
+      <div className="spinner-border" role="status" />
+    </div>
+  )
+
+  const errorAlert = <ErrorAlert error={tablesError} />
+
+  const tableCards = tables.map((table) => <Table key={table.table_id} table={table} />)
+
   return (
     <div className="card my-3 p-3" id="dashboard-card">
       <h3 className="card-title fs-3 text-center">Tables</h3>
       <div className="card-body d-flex flex-wrap">
-        {loading ? (
-          <div className="text-center flex-fill">
-            <div className="spinner-border" role="status" />
-          </div>
-        ) : tablesError ? (
-          <ErrorAlert error={tablesError} />
-        ) : (
-          tables.map((table) => <Table key={table.table_id} table={table} />)
-        )}
+        {loading ? loadingSpinner : tablesError ? errorAlert : tableCards}
       </div>
     </div>
   )

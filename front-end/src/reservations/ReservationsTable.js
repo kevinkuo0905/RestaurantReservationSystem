@@ -2,7 +2,7 @@ import React from "react"
 import Reservation from "./Reservation"
 
 export default function ReservationsTable({ reservations, setReservationsError }) {
-  return reservations.length > 0 ? (
+  const table = (
     <table className="table">
       <thead>
         <tr>
@@ -35,10 +35,14 @@ export default function ReservationsTable({ reservations, setReservationsError }
         ))}
       </tbody>
     </table>
-  ) : (
+  )
+
+  const emptyTableText = (
     <>
       <hr />
       <h3 className="text-center">No reservations found</h3>
     </>
   )
+
+  return reservations.length ? table : emptyTableText
 }

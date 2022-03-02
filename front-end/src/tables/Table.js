@@ -16,6 +16,15 @@ export default function Table({ table }) {
     }
   }
 
+  const occupiedContent = (
+    <span>
+      <span>Occupied</span>
+      <button data-table-id-finish={table_id} onClick={handleClick} className="btn btn-danger ms-2">
+        Finish
+      </button>
+    </span>
+  )
+
   return (
     <div className="card m-2" id="table-card">
       <div className="card-body">
@@ -32,16 +41,7 @@ export default function Table({ table }) {
         </p>
         <p data-table-id-status={table_id}>
           <b>Status: </b>
-          {reservation_id ? (
-            <span>
-              <span>Occupied</span>
-              <button data-table-id-finish={table_id} onClick={handleClick} className="btn btn-danger ms-2">
-                Finish
-              </button>
-            </span>
-          ) : (
-            <span>Free</span>
-          )}
+          {reservation_id ? occupiedContent : <span>Free</span>}
         </p>
       </div>
       <ErrorAlert error={tableError} />

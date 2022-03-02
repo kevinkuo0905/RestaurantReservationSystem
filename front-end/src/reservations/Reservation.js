@@ -5,7 +5,8 @@ import { Link } from "react-router-dom"
 
 export default function Reservation({ reservation, setReservationsError }) {
   const history = useHistory()
-  const { reservation_id, first_name, last_name, mobile_number, reservation_time, people, status } = reservation
+  const { reservation_id, first_name, last_name, mobile_number, reservation_time, people, status } =
+    reservation
 
   const handleClick = () => {
     if (window.confirm("Do you want to cancel this reservation? This cannot be undone.")) {
@@ -14,6 +15,12 @@ export default function Reservation({ reservation, setReservationsError }) {
         .catch(setReservationsError)
     }
   }
+  
+  const seatButton = (
+    <Link className="ms-3 btn btn-primary" to={`/reservations/${reservation_id}/seat`}>
+      Seat
+    </Link>
+  )
 
   return (
     <tr>
@@ -21,7 +28,11 @@ export default function Reservation({ reservation, setReservationsError }) {
         <Link className="btn btn-primary" to={`/reservations/${reservation_id}/edit`}>
           Edit
         </Link>
-        <button data-reservation-id-cancel={reservation_id} onClick={handleClick} className="btn btn-danger ms-1">
+        <button
+          data-reservation-id-cancel={reservation_id}
+          onClick={handleClick}
+          className="btn btn-danger ms-1"
+        >
           Cancel
         </button>
       </td>
@@ -36,11 +47,7 @@ export default function Reservation({ reservation, setReservationsError }) {
       <td>{reservation_time}</td>
       <td>
         <span>{people}</span>
-        {status === "booked" ? (
-          <Link className="ms-3 btn btn-primary" to={`/reservations/${reservation_id}/seat`}>
-            Seat
-          </Link>
-        ) : null}
+        {status === "booked" ? seatButton : null}
       </td>
     </tr>
   )
