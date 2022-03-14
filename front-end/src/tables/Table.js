@@ -19,7 +19,7 @@ export default function Table({ table }) {
   const occupiedContent = (
     <span>
       <span>Occupied</span>
-      <button data-table-id-finish={table_id} onClick={handleClick} className="btn btn-danger ms-2">
+      <button onClick={handleClick} className="btn btn-danger ms-2">
         Finish
       </button>
     </span>
@@ -39,7 +39,7 @@ export default function Table({ table }) {
           <b>Capacity: </b>
           {capacity}
         </p>
-        <p data-table-id-status={table_id}>
+        <p>
           <b>Status: </b>
           {reservation_id ? occupiedContent : <span>Free</span>}
         </p>

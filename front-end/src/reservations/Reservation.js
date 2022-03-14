@@ -15,7 +15,7 @@ export default function Reservation({ reservation, setReservationsError }) {
         .catch(setReservationsError)
     }
   }
-  
+
   const seatButton = (
     <Link className="ms-3 btn btn-primary" to={`/reservations/${reservation_id}/seat`}>
       Seat
@@ -28,15 +28,11 @@ export default function Reservation({ reservation, setReservationsError }) {
         <Link className="btn btn-primary" to={`/reservations/${reservation_id}/edit`}>
           Edit
         </Link>
-        <button
-          data-reservation-id-cancel={reservation_id}
-          onClick={handleClick}
-          className="btn btn-danger ms-1"
-        >
+        <button onClick={handleClick} className="btn btn-danger ms-1">
           Cancel
         </button>
       </td>
-      <td data-reservation-id-status={reservation_id}>{status}</td>
+      <td>{status}</td>
       <td className="d-none d-md-table-cell">{reservation_id}</td>
       <td className="d-none d-md-table-cell">{first_name}</td>
       <td className="d-none d-md-table-cell">{last_name}</td>
