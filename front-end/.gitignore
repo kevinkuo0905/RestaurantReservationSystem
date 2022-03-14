@@ -8,7 +8,6 @@
 # testing
 /coverage
 /test-report
-/e2e
 
 # production
 /build

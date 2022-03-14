@@ -8,6 +8,8 @@ node_modules/
 # testing
 src/utils/test.js
 coverage/
+/e2e
+/test
 
 # production
 build/
